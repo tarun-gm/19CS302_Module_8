@@ -51,3 +51,81 @@ bc
 a bc bc
 bc a bc
 bc bc a
+
+
+
+## Program
+
+```
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void swap(char **a,char**b)
+{
+    char *temp=*a;
+    *a=*b;
+    *b=temp;
+}
+int compare(const void *a,const void *b)
+{
+    return strcmp(*(const char **)a,*(const char **)b);
+    
+}
+int next_permutation(char **arr,int n)
+{
+    int i=n-2;
+    while(i>=0 && strcmp(arr[i],arr[i+1])>=0)
+    
+        i--;
+    if(i<0) return 0;
+    int j=n-1;
+    while(strcmp(arr[j],arr[i])<=0)
+        j--;
+    swap(&arr[i],&arr[j]);
+    int start =i+1,end=n-1;
+    while(start<end)
+    {
+        swap(&arr[start],&arr[end]);
+        start++;
+        end--;
+        
+    }
+    return -1;
+    
+}
+void print_array(char **arr,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%s",arr[i]);
+        if(i!=n-1) printf(" ");
+    }
+    printf("\n");
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    char **arr=malloc(n*sizeof(char *));
+    for(int i=0;i<n;i++)
+    {
+        arr[i]=malloc(100*sizeof(char));
+        scanf("%s",arr[i]);
+    }
+    qsort(arr,n,sizeof(char *),compare);
+    print_array(arr,n);
+    while(next_permutation(arr,n))
+    {
+        print_array(arr,n);
+    }
+    for(int i=0;i<n;i++) free(arr[i]);
+    free(arr);
+    return 0;
+    
+}
+
+```
+
+## Output
+
+<img width="297" height="253" alt="Screenshot 2026-03-19 191355" src="https://github.com/user-attachments/assets/dde2a44c-6289-4708-a452-84aaaad85ec2" />
