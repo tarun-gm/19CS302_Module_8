@@ -45,3 +45,27 @@ Explanation
 When we sum the integers 10 and 4, we get the integer 14. When we subtract the second number 4 from the first number 10, we get 6 as their difference.
 
 When we sum the floating-point numbers 4.0 and 2.0, we get 6.0. When we subtract the second number 2.0 from the first number 4.0, we get 2.0 as their difference.
+
+
+
+## Program
+
+```
+#include <stdio.h>
+
+int main()
+{
+    int a, b;
+    float c, d;
+    scanf("%d %d", &a, &b);
+    scanf("%f %f", &c, &d);
+    printf("%d %d\n", a + b, a - b);
+    printf("%.1f %.1f", c + d, c - d);
+    return 0;
+}
+
+```
+
+## Output
+
+<img width="352" height="198" alt="Screenshot 2026-03-19 191821" src="https://github.com/user-attachments/assets/4f7ad09a-2e1f-48f8-b507-25c1e039d018" />
